@@ -16,6 +16,7 @@ import kotlinx.coroutines.suspendCancellableCoroutine
 
 class GoogleAuthHelper(private val context: Context) {
 
+    // TODO 1: Inicializar las instancias de FirebaseAuth y CredentialManager
     private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private val credentialManager: CredentialManager = CredentialManager.create(context)
 
@@ -24,6 +25,8 @@ class GoogleAuthHelper(private val context: Context) {
 
     suspend fun signInWithGoogle(webClientId: String): Result<FirebaseUser> {
         return try {
+            // TODO 2: Configurar la opción de inicio de sesión de Google (GetGoogleIdOption)
+            /*
             val googleIdOption = GetGoogleIdOption.Builder()
                 .setFilterByAuthorizedAccounts(false)
                 .setServerClientId(webClientId)
@@ -33,7 +36,10 @@ class GoogleAuthHelper(private val context: Context) {
             val request = GetCredentialRequest.Builder()
                 .addCredentialOption(googleIdOption)
                 .build()
+            */
 
+            // TODO 3: Solicitar credenciales al CredentialManager y autenticar con Firebase
+            /*
             val result = credentialManager.getCredential(
                 context = context,
                 request = request
@@ -51,7 +57,7 @@ class GoogleAuthHelper(private val context: Context) {
                             if (user != null) {
                                 continuation.resume(user)
                             } else {
-                                continuation.resumeWithException(Exception("Usuario de Firebase nulo"))
+                                continuation.resumeWithException(Exception("Usuario nulo"))
                             }
                         }
                         .addOnFailureListener { exception ->
@@ -62,14 +68,15 @@ class GoogleAuthHelper(private val context: Context) {
             } else {
                 Result.failure(Exception("Tipo de credencial no soportado"))
             }
-        } catch (e: GetCredentialException) {
-            Result.failure(e)
+            */
+            Result.failure(Exception("Paso no implementado aún. Revisa los TODOs en GoogleAuthHelper.kt"))
         } catch (e: Exception) {
             Result.failure(e)
         }
     }
 
     fun signOut() {
+        // TODO 4: Cerrar sesión en Firebase
         auth.signOut()
     }
 }
