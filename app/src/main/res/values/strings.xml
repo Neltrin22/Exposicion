@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">FirebaseExpo</string>
+    <!-- Reemplazar este valor con el Web Client ID obtenido de Firebase Console -->
+    <string name="default_web_client_id">1020927827048-8ls2tkcvt0fq7r7a0nnp7okfkm2khugs.apps.googleusercontent.com</string>
+</resources>
